@@ -55,13 +55,16 @@ class Platform{
 
 //implement player class
 const player = new Player()
-const platforms = [new Platform({x:200, y:400}), new Platform({x: 400, y: 500})]
+const platforms = [new Platform({x:200, y:400}), new Platform({x: 400, y: 500}), new Platform({x: 800, y: 500}), new Platform({x:1000, y:400}), new Platform({x:1200, y:500})]
 
 const keys = {
     right:{
         pressed: false
     },
     left:{
+        pressed: false
+    },
+    up: {
         pressed: false
     }
 }
@@ -80,7 +83,10 @@ function animate() {
         player.velocity.x = 5
     } else  if (keys.left.pressed && player.position.x > 100){
         player.velocity.x = -5
-    } else {
+    } else if (keys.up.pressed && player.position.y > 800){
+        player.velocity.y = -10
+    }
+    else {
         player.velocity.x = 0
         
         if(keys.right.pressed){
